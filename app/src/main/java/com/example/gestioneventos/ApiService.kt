@@ -26,4 +26,14 @@ interface ApiService {
     @POST("asistir.php")
     fun confirmarAsistencia(@Body request: AsistenciaRequest): Call<LoginResponse>
 
+    // 1. Guardar un comentario nuevo
+    @POST("guardar_comentario.php")
+    fun guardarComentario(@Body request: ComentarioRequest): Call<LoginResponse>
+
+    // 2. Leer los comentarios de un evento específico
+    // Usamos @Query para enviar ?evento_id=1 en la URL
+    @GET("ver_comentarios.php")
+    fun verComentarios(@retrofit2.http.Query("evento_id") id: String): Call<List<Comentario>>
+
+
 }

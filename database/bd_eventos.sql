@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2025 a las 18:24:14
+-- Tiempo de generación: 18-11-2025 a las 04:58:01
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -34,6 +34,14 @@ CREATE TABLE `asistencias` (
   `estado` enum('confirmado','interesado','cancelado') DEFAULT 'confirmado'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `asistencias`
+--
+
+INSERT INTO `asistencias` (`id`, `usuario_id`, `evento_id`, `estado`) VALUES
+(1, 1, 2, 'confirmado'),
+(2, 1, 1, 'confirmado');
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +56,16 @@ CREATE TABLE `comentarios` (
   `calificacion` int(11) DEFAULT NULL CHECK (`calificacion` >= 1 and `calificacion` <= 5),
   `fecha_comentario` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id`, `usuario_id`, `evento_id`, `texto`, `calificacion`, `fecha_comentario`) VALUES
+(1, 1, 2, 'malo', 1, '2025-11-18 03:34:52'),
+(2, 1, 2, 'hpa', 5, '2025-11-18 03:35:08'),
+(3, 2, 1, 'probando', 5, '2025-11-18 03:53:07'),
+(4, 2, 1, 'suuu', 2, '2025-11-18 03:54:19');
 
 -- --------------------------------------------------------
 
@@ -71,7 +89,8 @@ CREATE TABLE `eventos` (
 --
 
 INSERT INTO `eventos` (`id`, `organizador_id`, `titulo`, `descripcion`, `fecha_hora`, `ubicacion`, `imagen_url`, `creado_en`) VALUES
-(1, 1, 'Feria de Emprendedores', 'Gran feria comunitaria para apoyar el comercio local.', '2025-12-10 09:00:00', 'Parque Central', 'https://via.placeholder.com/150', '2025-11-17 16:54:58');
+(1, 1, 'Feria de Emprendedores', 'Gran feria comunitaria para apoyar el comercio local.', '2025-12-10 09:00:00', 'Parque Central', 'https://via.placeholder.com/150', '2025-11-17 16:54:58'),
+(2, 1, 'Torneo de Fútbol', 'Torneo relámpago en la cancha principal.', '2025-12-15 14:00:00', 'Cancha Municipal', 'https://via.placeholder.com/150', '2025-11-17 22:03:02');
 
 -- --------------------------------------------------------
 
@@ -93,7 +112,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `foto_perfil`, `fecha_registro`) VALUES
-(1, 'Juan Perez', 'juan@test.com', '123456', '', '2025-11-17 16:54:58');
+(1, 'Juan Perez', 'juan@test.com', '123456', '', '2025-11-17 16:54:58'),
+(2, 'victor cerritos', 'victorcerritos6@gmail.com', '123', NULL, '2025-11-18 02:14:32');
 
 --
 -- Índices para tablas volcadas
@@ -137,25 +157,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `asistencias`
 --
 ALTER TABLE `asistencias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

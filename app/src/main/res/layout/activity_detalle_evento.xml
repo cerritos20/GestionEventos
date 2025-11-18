@@ -83,12 +83,69 @@
                 android:id="@+id/btnCompartir"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Compartir con Amigos"
-                android:textSize="18sp"
+                android:text="Compartir"
                 android:layout_marginTop="12dp"
                 android:backgroundTint="#2196F3"
                 app:icon="@android:drawable/ic_menu_share"
-                app:iconGravity="textStart" />
+                app:iconGravity="textStart"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#CCC"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comentarios y Reseñas"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:layout_marginBottom="16dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvComentarios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deja tu opinión:"
+                android:layout_marginTop="24dp"
+                android:textStyle="bold"/>
+
+            <RatingBar
+                android:id="@+id/ratingNuevo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stepSize="1.0"
+                android:numStars="5"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNuevoComentario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Escribe aquí..."
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLines="4"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnEnviarComentario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Publicar Opinión"
+                android:layout_marginTop="12dp"
+                android:layout_gravity="end"/>
 
         </LinearLayout>
     </LinearLayout>

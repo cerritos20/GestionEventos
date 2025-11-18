@@ -1,5 +1,6 @@
 package com.example.gestioneventos
 
+import android.content.Context // Importante para SharedPreferences
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -22,11 +23,9 @@ class MainActivity : AppCompatActivity() {
         val etEmail = findViewById<TextInputEditText>(R.id.etEmail)
         val etPassword = findViewById<TextInputEditText>(R.id.etPassword)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
-
-        // 👇 NUEVO: Vinculamos el texto de "Registrarse"
         val tvRegistrar = findViewById<TextView>(R.id.tvRegistrar)
 
-        // ✅ TU IP DIRECTA (192.168.1.14)
+        // ✅ TU IP (192.168.1.14)
         val retrofit = Retrofit.Builder()
             .baseUrl("http://192.168.1.14/backend/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -34,7 +33,6 @@ class MainActivity : AppCompatActivity() {
 
         val api = retrofit.create(ApiService::class.java)
 
-        // Lógica del botón INGRESAR
         btnLogin.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val pass = etPassword.text.toString().trim()
@@ -51,9 +49,16 @@ class MainActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         val respuesta = response.body()
                         if (respuesta != null && respuesta.exito) {
-                            Toast.makeText(applicationContext, "¡Bienvenido!", Toast.LENGTH_SHORT).show()
 
-                            // 🚀 SALTO A LA PANTALLA HOME
+                            // 👇 AQUÍ GUARDAMOS QUIÉN ERES EN LA MEMORIA DEL TELÉFONO
+                            val prefs = getSharedPreferences("SesionUsuario", Context.MODE_PRIVATE)
+                            val editor = prefs.edit()
+                            editor.putString("id_usuario", respuesta.usuario?.id)
+                            editor.putString("nombre_usuario", respuesta.usuario?.nombre)
+                            editor.apply() // Guardar cambios
+
+                            Toast.makeText(applicationContext, "¡Hola ${respuesta.usuario?.nombre}!", Toast.LENGTH_SHORT).show()
+
                             val intento = Intent(this@MainActivity, HomeActivity::class.java)
                             startActivity(intento)
                             finish()
@@ -72,10 +77,8 @@ class MainActivity : AppCompatActivity() {
             })
         }
 
-        // 👇 NUEVO: Acción al tocar "¿No tienes cuenta? Regístrate"
         tvRegistrar.setOnClickListener {
-            val intent = Intent(this, RegistroActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, RegistroActivity::class.java))
         }
     }
 }
