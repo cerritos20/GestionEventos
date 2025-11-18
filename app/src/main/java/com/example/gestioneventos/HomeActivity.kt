@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.gson.GsonBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,32 +19,50 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var fabCrear: FloatingActionButton
+    private lateinit var fabHistorial: FloatingActionButton
     private lateinit var apiService: ApiService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        // Vinculamos las vistas
         recyclerView = findViewById(R.id.rvEventos)
         fabCrear = findViewById(R.id.fabCrear)
+        fabHistorial = findViewById(R.id.fabHistorial) // Este es el botón naranja nuevo
 
         // Configurar la lista
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // ✅ AQUÍ ESTÁ TU IP DIRECTA (192.168.1.14)
+        // Configurar Retrofit (Con modo relajado y tu IP)
+        val gson = GsonBuilder().setLenient().create()
         val retrofit = Retrofit.Builder()
             .baseUrl("http://192.168.1.14/backend/")
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
         apiService = retrofit.create(ApiService::class.java)
 
-        // Cargar los eventos automáticamente
+        // Cargar los eventos al abrir
         cargarEventos()
 
+        // ACCIÓN 1: Ir a Crear Evento
         fabCrear.setOnClickListener {
-            Toast.makeText(this, "Crear Evento (Próximamente)", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, CrearEventoActivity::class.java)
+            startActivity(intent)
         }
+
+        // ACCIÓN 2: Ir al Historial
+        fabHistorial.setOnClickListener {
+            val intent = Intent(this, HistorialActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    // Esto hace que la lista se actualice sola si agregas un evento y regresas
+    override fun onResume() {
+        super.onResume()
+        cargarEventos()
     }
 
     private fun cargarEventos() {
@@ -55,7 +74,7 @@ class HomeActivity : AppCompatActivity() {
                         val adapter = EventoAdapter(eventos)
                         recyclerView.adapter = adapter
                     } else {
-                        Toast.makeText(applicationContext, "No hay eventos aún", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "No hay eventos próximos", Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     Toast.makeText(applicationContext, "Error del servidor", Toast.LENGTH_SHORT).show()

@@ -35,5 +35,7 @@ interface ApiService {
     @GET("ver_comentarios.php")
     fun verComentarios(@retrofit2.http.Query("evento_id") id: String): Call<List<Comentario>>
 
+    @GET("historial.php")
+    fun verHistorial(): Call<List<Evento>>
 
 }

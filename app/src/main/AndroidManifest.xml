@@ -28,6 +28,7 @@
         <activity android:name=".CrearEventoActivity" />
         <activity android:name=".RegistroActivity" />
         <activity android:name=".DetalleEventoActivity" />
+        <activity android:name=".HistorialActivity" />
 
     </application>
 

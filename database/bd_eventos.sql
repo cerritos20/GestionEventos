@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2025 a las 04:58:01
+-- Tiempo de generación: 18-11-2025 a las 05:20:25
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -90,7 +90,8 @@ CREATE TABLE `eventos` (
 
 INSERT INTO `eventos` (`id`, `organizador_id`, `titulo`, `descripcion`, `fecha_hora`, `ubicacion`, `imagen_url`, `creado_en`) VALUES
 (1, 1, 'Feria de Emprendedores', 'Gran feria comunitaria para apoyar el comercio local.', '2025-12-10 09:00:00', 'Parque Central', 'https://via.placeholder.com/150', '2025-11-17 16:54:58'),
-(2, 1, 'Torneo de Fútbol', 'Torneo relámpago en la cancha principal.', '2025-12-15 14:00:00', 'Cancha Municipal', 'https://via.placeholder.com/150', '2025-11-17 22:03:02');
+(2, 1, 'Torneo de Fútbol', 'Torneo relámpago en la cancha principal.', '2025-12-15 14:00:00', 'Cancha Municipal', 'https://via.placeholder.com/150', '2025-11-17 22:03:02'),
+(3, 1, 'Pasado de Prueba', NULL, '2022-11-30 22:07:33', 'Casa', NULL, '2025-11-18 04:08:58');
 
 -- --------------------------------------------------------
 
@@ -169,7 +170,7 @@ ALTER TABLE `comentarios`
 -- AUTO_INCREMENT de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
