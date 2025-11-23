@@ -30,6 +30,9 @@ interface ApiService {
     @POST("guardar_comentario.php")
     fun guardarComentario(@Body request: ComentarioRequest): Call<LoginResponse>
 
+    @POST("login_google.php") // Nuevo endpoint para Google
+    fun loginWithGoogle(@Body request: GoogleLoginRequest): Call<LoginResponse>
+
     // 2. Leer los comentarios de un evento específico
     // Usamos @Query para enviar ?evento_id=1 en la URL
     @GET("ver_comentarios.php")

@@ -61,7 +61,7 @@ class DetalleEventoActivity : AppCompatActivity() {
 
         val gson = GsonBuilder().setLenient().create()
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.1.14/backend/")
+            .baseUrl("http://192.168.1.25/backend/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 

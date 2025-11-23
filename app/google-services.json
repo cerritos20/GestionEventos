@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "596636270098",
+    "project_id": "dsmgestiondeeventos",
+    "storage_bucket": "dsmgestiondeeventos.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596636270098:android:f195bbb28036da17c1e2cb",
+        "android_client_info": {
+          "package_name": "com.example.gestioneventos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596636270098-gbeg3gu82u2pj798g6pkg6nlu3o5g9fc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gestioneventos",
+            "certificate_hash": "43fb7c9f7c8f3ec6735ce6235256df822b7e07b1"
+          }
+        },
+        {
+          "client_id": "596636270098-h7952b64qnuos1nga41utl8sgeq7vh2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDecO6V-x9n84rXZ0rSGeZZgIKwXSwVwpk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596636270098-g0ntl2p7pjaotd08kaailtn482mhr2th.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
