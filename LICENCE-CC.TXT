@@ -1,0 +1,15 @@
+Materiales (documentación PDF, imágenes, mockups, textos y videos) del proyecto “GestionEventos”
+con licencia Creative Commons Atribución-No Comercial 4.0 Internacional (CC BY-NC 4.0).
+
+Usted es libre de:
+- Compartir — copiar y redistribuir el material en cualquier medio o formato.
+- Adaptar — remezclar, transformar y crear a partir del material.
+Siempre que cumpla las condiciones:
+- Atribución — debe reconocer la autoría con el crédito indicado abajo.
+- No Comercial — no puede utilizar el material para fines comerciales.
+
+Licencia completa: https://creativecommons.org/licenses/by-nc/4.0/
+
+Atribución sugerida:
+Magaña Martínez, S. E.; Cerritos Berrios, V. M.; Ramos Vásquez, D. E.; & Méndez Menjívar, V. F. (2025).
+GestionEventos — Materiales del proyecto (CC BY-NC 4.0). https://github.com/cerritos20/GestionEventos
